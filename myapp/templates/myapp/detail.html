@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+    <p>Name: {{ topic_detail.name|upper }}</p>
+    <p>Length: {{ topic_detail.length }}</p>
+    <div>
+        Courses: <br>
+        {% if related_courses_list %}
+            {% for course in related_courses_list %}
+                <p>{{ course.title }} <span>Price: $</span>{{ course.price }} </p>
+            {% endfor %}
+        {% else %}
+            <strong>There are no available courses for the topic!</strong>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="background-color: lightslategrey">
+    <head>
+
+        {% load static %}
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+        <title>
+            E-learning App - {% block title %}Welcome!{% endblock %}
+        </title>
+    </head>
+    <body>
+        <div>
+            {% if 'user_first_name' in request.session and 'user_last_name' in request.session %}
+                <h1 class="text-center well-sm">Hello {{ request.session.user_first_name }}  {{ request.session.user_last_name }}</h1>
+            {% else %}
+                <marquee><h1 class="text-center well-sm" >Hello User</h1></marquee>
+            {% endif %}
+            <p>
+                {% block body_block %}***{% endblock %}
+            </p>
+        </div>
+        <hr/>
+        <div>
+            <ul style="margin-left: 140px;">
+                <li class="hbar1"><a href="about">Find out about this site</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:index' %}">Click here to return to main page</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:findcourses' %}">Click here to search the courses</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:place_order' %}">Place Order</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:review' %}">Review</a></li>
+
+                {% if 'username' in request.session %}
+                    <li class="hbar1"><a href="{% url 'myapp:logout' %}">Logout</a></li>
+                    <li class="hbar1"><a href="{% url 'myapp:myaccount' %}">My Account</a></li>
+                {% else %}
+                    <li class="hbar1"><a href="{% url 'myapp:register' %}">Register Here</a></li>
+                    <li class="hbar1"><a href="{% url 'myapp:login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+{{ message }}
+   <h3>{{ name }}</h3>
+    <h3>Courses Interested In</h3>
+    {% for cor in course %}
+        {{ cor }}<br>
+    {% endfor %}
+
+<h3>Registered Courses </h3>
+ {% for reg in reg_course %}
+        {{ reg }}<br>
+    {% endfor %}
+{% endblock %}

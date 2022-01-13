@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+    {% if name %}
+        <h1>Hello {{ name }}</h1>
+    {% endif %}
+
+    {% if length and courselist %}
+        <p>
+            Search results for courses having length '{{ length }} weeks':
+            <ul>
+                {% for course in courselist %}
+                    <li>{{ course }}</li>
+                {% endfor %}
+            </ul>
+        </p>
+    {% elif not length and courselist %}
+        <p>
+            Search results for all courses:
+            <ul>
+                {% for course in courselist %}
+                    <li>{{ course }}</li>
+                {% endfor %}
+            </ul>
+        </p>
+    {% else %}
+        <p>No results found!</p>
+    {% endif %}
+{% endblock %}

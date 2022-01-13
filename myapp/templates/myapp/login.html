@@ -1,0 +1,18 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+    <h1 color="blue" class="text-center well-sm" >Site Login</h1>
+    <div class="form-group  jumbotron text-center"   style="width: 60%;margin-left: 208px;">
+
+        <form method="post" action="{% url 'myapp:login' %}">
+            {% csrf_token %}
+      Username<input type="text"  class="form-control"  style="width: 60%; margin-left: 133px;" name="username" placeholder="Enter your username" style="margin: 10px"/>
+            Password<input type="password" class="form-control" style="width: 60%; margin-left: 133px;" typeof="password" name="password" placeholder="Enter your password" style="margin: 10px"/>
+
+
+            <button type="submit" name="loginBtn" class="btn btn-success" value="Login" style="margin: 10px">Login</button>
+
+            <br>
+            <a href="{% url 'myapp:forgot_password' %}">Forgot Password?</a>
+        </form>
+    </div>
+{% endblock %}

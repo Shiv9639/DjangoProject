@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>E-Learning WebApp!</title>
+</head>
+<body>
+    <div>
+         <p><a href="{% url 'myapp:index' %}">Home</a></p>
+         {% if topic_detail %}
+             <p><b style="font-size: 24px">Topic name: </b><span>{{ topic_detail.name }}</span></p>
+             <p><b style="font-size: 24px">Topic length: </b><span>{{ topic_detail.length }}</span></p>
+         {% endif %}
+         {% if related_courses_list %}
+             <h2>Related Courses</h2>
+             {% for course in related_courses_list %}
+                 <p>{{ course.title }} <span>Price: $</span>{{course.price}}</p>
+             {% endfor %}
+         {% else %}
+             <strong>There are no related courses for this topic.</strong>
+         {% endif %}
+    </div>
+</body>
+</html>

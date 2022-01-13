@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+    <p>
+    {% if message %}
+    {{ message }}
+    {% endif %}
+    </p>
+    <form action="{% url 'myapp:review' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+            <button type="submit"  name="submit1" class="btn btn-success"  value="Post" style= "width: 10%; margin-left: 5px" >Post</button>
+
+    </form>
+{% endblock %}

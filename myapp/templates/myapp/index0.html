@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Learning WebApp!</title>
+</head>
+<body>
+    {% if top_list %}
+        <h2>List of Topics</h2>
+        <ol>
+            {% for top in top_list %}
+                <li>{{ top.name }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no available topics!</strong>
+    {% endif %}
+    {% if courses_list %}
+        <h2>List of courses</h2>
+        <ol>
+            {% for course in courses_list %}
+                <li>{{ course.title }} <span> Price: $</span>{{ course.price }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no available courses!</strong>
+    {% endif %}
+</body>
+<footer>
+    <p style="position: fixed;bottom: 0px"><a href="{% url 'myapp:about' %}">About page</a></p>
+</footer>
+</html>
